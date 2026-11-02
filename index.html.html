@@ -181,7 +181,7 @@ function render(soft){$("#cnt").textContent=Object.keys(lib).length;$("#cc").tex
 document.querySelectorAll(".nav").forEach(b=>b.onclick=()=>go(b.dataset.v));
 $("#q").oninput=()=>{if(view!="store")go("store");else store()};
 $("#th").onclick=()=>{const r=document.documentElement,d=getComputedStyle(r).colorScheme=="dark";r.dataset.theme=d?"light":"dark"};
-setInterval(()=>{if(view=="store"&&!$("#q").value&&!matchMedia("(prefers-reduced-motion:reduce)").matches&&document.activeElement.tagName!="BUTTON"){hero=(hero+1)%5;render()}},6000);
+setInterval(()=>{if(view=="store"&&!$("#q").value&&!matchMedia("(prefers-reduced-motion:reduce)").matches&&!(document.activeElement&&document.activeElement.closest&&document.activeElement.closest("#view"))){hero=(hero+1)%5;render()}},6000);
 Object.values(lib).forEach(l=>{if(l.st=="dl")l.st="new";l.t=0});
 render();
 </script>
